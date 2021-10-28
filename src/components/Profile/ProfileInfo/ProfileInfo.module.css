@@ -1,0 +1,20 @@
+.profile__info{
+    display: flex;
+    margin-bottom: 30px;
+}
+.profile__img{
+    margin-right: 30px;
+}
+.profile__img img{
+    height: 200px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.profile__infoText{
+
+}
+.profile__item{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,23 @@
+.post {
+    color: #fff;
+    display: grid;
+    grid-template-columns: 100px 4fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.post__text {
+    border-radius: 10px;
+    background: var(--color-accent);
+    padding: 15px;
+    width: 100%;
+}
+
+.post img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    margin-right: 30px;
+    border-radius: 10px;
+
+}

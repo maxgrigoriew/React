@@ -1,0 +1,31 @@
+
+.navWrapper {
+    grid-area: A;
+    margin-bottom: 200px;
+}
+.nav__list{
+    list-style: none;
+    padding: 0;
+}
+.nav__item{
+    /*margin-bottom: 10px;*/
+}
+.nav__item:not(:last-child){
+    margin-bottom: 10px;
+}
+.nav__link{
+    width: 100%;
+    padding: 10px 15px;
+    transition:all 0.5s;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav__link:hover{
+    background: var(--color-accent);
+    color: white !important;
+}
+.nav__link.active{
+    color: #fff;
+    background: var(--color-accent)
+}

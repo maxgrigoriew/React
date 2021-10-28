@@ -1,0 +1,11 @@
+.item{
+    padding: 10px;
+
+    text-align: center;
+}
+.item img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}

@@ -1,0 +1,23 @@
+.postsTop{
+}
+.postsTop__inner{
+    /*display: flex;*/
+    margin-bottom: 30px;
+    text-align: right;
+}
+.textarea{
+    padding: 15px;
+    height: 100px;
+    width: 100%;
+    margin-right: 30px;
+    resize: none;
+    border-radius: 10px;
+    border-color: #89a1ff;
+    background: #d4d6de;
+    margin-bottom: 15px;
+}
+.textarea::placeholder{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+

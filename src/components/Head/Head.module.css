@@ -1,0 +1,24 @@
+.header {
+    padding: 15px;
+    background: var(--color-accent);
+    grid-area: A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #89a1ff;
+}
+.header__text{
+    color: #fff;
+    text-transform: uppercase;
+}
