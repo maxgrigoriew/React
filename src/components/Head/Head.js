@@ -15,7 +15,7 @@ const Head = (props) => {
 			{props.isAuth ? props.login :
 				<NavLink to='/login'>
 					<span className={s.header__text}>Login</span>
-				</NavLink> }
+				</NavLink>  }
 		</header>
 	);
 };
