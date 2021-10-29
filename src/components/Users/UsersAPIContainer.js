@@ -1,5 +1,5 @@
 /** @format */
-
+// bla  ball blablab
 import React from 'react';
 import Users from './Users';
 import {usersAPI} from './../../api/api';
@@ -21,7 +21,7 @@ class UsersAPIContainer extends React.Component {
 		// 	});
 	}
 	onPagesChanged = (page) => {
-		this.props.getChancheUsersThunk(page, this.props.pageSize)
+		this.props.getUsersThunk(page, this.props.pageSize);
 		// this.props.isTotalFetching(true);
 		// this.props.setCurentPage(p);
 		// usersAPI.getUsers(p, this.props.pageSize).then((data) => {
