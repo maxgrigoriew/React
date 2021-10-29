@@ -9,25 +9,26 @@ class UsersAPIContainer extends React.Component {
 		super(props);
 	}
 	componentDidMount() {
-		this.props.isTotalFetching(true);
-		usersAPI
-			.getUsers(this.props.pageNumber, this.props.pageSize)
-			.then((data) => {
-				this.props.setUsers(data.items);
-				this.props.setTotalCount(data.totalCount);
-
-				this.props.isTotalFetching(false);
-			});
+		// сделали thunk
+		this.props.getUsersThunk(this.props.pageNumber, this.props.pageSize);
+		// this.props.isTotalFetching(true);
+		// usersAPI
+		// 	.getUsers(this.props.pageNumber, this.props.pageSize)
+		// 	.then((data) => {
+		// 		this.props.setUsers(data.items);
+		// 		this.props.setTotalCount(data.totalCount);
+		// 		this.props.isTotalFetching(false);
+		// 	});
 	}
-	onPagesChanged = (p) => {
-		this.props.isTotalFetching(true);
-
-		this.props.setCurentPage(p);
-		usersAPI.getUsers(p, this.props.pageSize).then((data) => {
-			this.props.setUsers(data.items);
-			this.props.setTotalCount(data.totalCount);
-			this.props.isTotalFetching(false);
-		});
+	onPagesChanged = (page) => {
+		this.props.getChancheUsersThunk(page, this.props.pageSize)
+		// this.props.isTotalFetching(true);
+		// this.props.setCurentPage(p);
+		// usersAPI.getUsers(p, this.props.pageSize).then((data) => {
+		// 	this.props.setUsers(data.items);
+		// 	this.props.setTotalCount(data.totalCount);
+		// 	this.props.isTotalFetching(false);
+		// });
 	};
 	render() {
 		return (

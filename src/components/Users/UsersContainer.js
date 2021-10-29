@@ -4,12 +4,16 @@ import UsersAPIContainer from './UsersAPIContainer';
 
 import {
 	setUsers,
-	follow,
-	unfollow,
+	followSucces,
+	unfollowSucces,
 	isTotalFetching,
 	setCurentPage,
 	setTotalCount,
 	toggleFollowingInProgress,
+	getUsersThunkCreator,
+	followThunkCreacor,
+	unfollowThunkCreacor,
+	getChancheUsersThunk,
 } from './../../Redux/users-redusers';
 
 let mapStateToProps = (state) => {
@@ -26,10 +30,16 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
 	setUsers,
-	follow,
-	unfollow,
+	followSucces,
+	unfollowSucces,
 	isTotalFetching,
 	setCurentPage,
 	setTotalCount,
 	toggleFollowingInProgress,
+	// сделал такую запись, чтобы показать, что мы вызываем череза пропсы не getUsersThunkCreator, а колбэк, который создаст getUsersThunkCreator. Для сокращения кода можно писать по новому синтаксису (getUsersThunkCreator: getUsersThunkCreator)
+
+	getUsersThunk: getUsersThunkCreator,
+	followThunkCreacor,
+	unfollowThunkCreacor,
+	getChancheUsersThunk,
 })(UsersAPIContainer);

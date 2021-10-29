@@ -1,4 +1,5 @@
 /** @format */
+import {usersAPI} from './../api/api';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -63,19 +64,22 @@ let usersReduser = (state = initialState, action) => {
 			return {
 				...state,
 				followingInProgress: action.followingInProgress
-					// 
 					? [...state.followingInProgress, action.id]
-					: [state.followingInProgress.filter(id => id !=action.id)],
+					: [
+							state.followingInProgress.filter(
+								(id) => id != action.id
+							),
+					],
 			};
 		default:
 			return state;
 	}
 };
 
-export const follow = (userId) => {
+export const followSucces = (userId) => {
 	return {type: 'FOLLOW', userId};
 };
-export const unfollow = (userId) => {
+export const unfollowSucces = (userId) => {
 	return {type: 'UNFOLLOW', userId};
 };
 export const setUsers = (users) => {
@@ -92,6 +96,55 @@ export const setTotalCount = (totalCount) => {
 };
 export const toggleFollowingInProgress = (followingInProgress, id) => {
 	return {type: 'TOGGLE_IS_FOLLOWING', followingInProgress, id};
+};
+
+export const getUsersThunkCreator = (pageNumber, pageSize, page) => {
+	return (dispatch) => {
+		dispatch(isTotalFetching(true));
+		usersAPI.getUsers(pageNumber, pageSize).then((data) => {
+
+			dispatch(setUsers(data.items));
+			dispatch(setTotalCount(data.totalCount));
+			dispatch(isTotalFetching(false));
+		});
+	};
+};
+
+export const getChancheUsersThunk = (pageNumber, pageSize) => {
+	return (dispatch) => {
+		dispatch(isTotalFetching(true));
+		usersAPI.getUsers(pageNumber, pageSize).then((data) => {
+			dispatch(setCurentPage(pageNumber));
+			dispatch(setUsers(data.items));
+			dispatch(setTotalCount(data.totalCount));
+			dispatch(isTotalFetching(false));
+		});
+	};
+};
+
+//    ---------------------THUNKS------------------
+export const followThunkCreacor = (UserId) => {
+	return (dispatch) => {
+		dispatch(toggleFollowingInProgress(true, UserId));
+		usersAPI.followUser(UserId).then((data) => {
+			if (data.resultCode == 0) {
+				dispatch(followSucces(UserId));
+			}
+			dispatch(toggleFollowingInProgress(false, UserId));
+		});
+	};
+};
+export const unfollowThunkCreacor = (UserId) => {
+	return (dispatch) => {
+		dispatch(toggleFollowingInProgress(true, UserId));
+		usersAPI.unFollowUser(UserId).then((data) => {
+			if (data.resultCode == 0) {
+				dispatch(unfollowSucces(UserId));
+			}
+			dispatch(toggleFollowingInProgress(false, UserId));
+			
+		});
+	};
 };
 
 export default usersReduser;

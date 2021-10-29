@@ -123,21 +123,7 @@ export default function Users(props) {
 									(id) => id === item.id
 								)}
 								onClick={() => {
-									props.toggleFollowingInProgress(
-										true,
-										item.id
-									);
-									usersAPI
-										.unFollowUser(item.id)
-										.then((data) => {
-											if (data.resultCode == 0) {
-												props.unfollow(item.id);
-											}
-											props.toggleFollowingInProgress(
-												false,
-												item.id
-											);
-										});
+									props.unfollowThunkCreacor(item.id);
 								}}>
 								Follow
 							</Button>
@@ -154,21 +140,7 @@ export default function Users(props) {
 									(id) => id === item.id
 								)}
 								onClick={() => {
-									props.toggleFollowingInProgress(
-										true,
-										item.id
-									);
-									usersAPI
-										.followUser(item.id)
-										.then((data) => {
-											if (data.resultCode == 0) {
-												props.follow(item.id);
-											}
-											props.toggleFollowingInProgress(
-												false,
-												item.id
-											);
-										});
+									props.followThunkCreacor(item.id);
 								}}>
 								Unfollow
 							</Button>
