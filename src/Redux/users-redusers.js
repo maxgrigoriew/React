@@ -109,7 +109,7 @@ export const getUsersThunkCreator = (pageNumber, pageSize,) => {
 		});
 	};
 };
-
+// здесь дополнительный позожий код, но есть еще диспач. я добавил его в предыдущий код getUsersThunkCreator. Багов не замечено
 // export const getChancheUsersThunk = (pageNumber, pageSize) => {
 // 	return (dispatch) => {
 // 		dispatch(isTotalFetching(true));

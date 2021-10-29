@@ -1,8 +1,5 @@
 /** @format */
-// bla  ball blablab
-// bla  ball blablab
-// bla  ball blablab
-// bla  ball blablab
+
 import React from 'react';
 import Users from './Users';
 import {usersAPI} from './../../api/api';
