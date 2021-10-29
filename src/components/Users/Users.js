@@ -32,6 +32,7 @@ const Button = styled.button`
 		color: #fff;
 		background: var(--color-accent);
 		border: 1px solid #fff;
+		cursor: wait;
 	}
 `;
 const Name = styled.h1`
