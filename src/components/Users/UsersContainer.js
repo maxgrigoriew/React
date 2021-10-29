@@ -13,7 +13,6 @@ import {
 	getUsersThunkCreator,
 	followThunkCreacor,
 	unfollowThunkCreacor,
-	getChancheUsersThunk,
 } from './../../Redux/users-redusers';
 
 let mapStateToProps = (state) => {
@@ -41,5 +40,4 @@ export default connect(mapStateToProps, {
 	getUsersThunk: getUsersThunkCreator,
 	followThunkCreacor,
 	unfollowThunkCreacor,
-	getChancheUsersThunk,
 })(UsersAPIContainer);

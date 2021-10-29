@@ -110,17 +110,17 @@ export const getUsersThunkCreator = (pageNumber, pageSize,) => {
 	};
 };
 
-export const getChancheUsersThunk = (pageNumber, pageSize) => {
-	return (dispatch) => {
-		dispatch(isTotalFetching(true));
-		usersAPI.getUsers(pageNumber, pageSize).then((data) => {
-			dispatch(setCurentPage(pageNumber));
-			dispatch(setUsers(data.items));
-			dispatch(setTotalCount(data.totalCount));
-			dispatch(isTotalFetching(false));
-		});
-	};
-};
+// export const getChancheUsersThunk = (pageNumber, pageSize) => {
+// 	return (dispatch) => {
+// 		dispatch(isTotalFetching(true));
+// 		usersAPI.getUsers(pageNumber, pageSize).then((data) => {
+// 			dispatch(setCurentPage(pageNumber));
+// 			dispatch(setUsers(data.items));
+// 			dispatch(setTotalCount(data.totalCount));
+// 			dispatch(isTotalFetching(false));
+// 		});
+// 	};
+// };
 
 //    ---------------------THUNKS------------------
 export const followThunkCreacor = (UserId) => {
