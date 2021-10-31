@@ -1,19 +1,20 @@
 /** @format */
 
 import Dialogs from './Dialogs';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
-	addDialogsMessages,
-	updateDialogsNewMessages,
+    addDialogsMessages,
+    updateDialogsNewMessages,
 } from '../../Redux/dialogs-reduser';
 
 let mapStateToProps = (state) => {
-	console.log(state)
-	return {
-		messages: state.dialogsReducer.messages,
-		newMessages: state.dialogsReducer.newMessages,
-		dialogs: state.dialogsReducer.dialogs,
-	};
+    console.log(state)
+    return {
+        messages: state.dialogsReducer.messages,
+        newMessages: state.dialogsReducer.newMessages,
+        dialogs: state.dialogsReducer.dialogs,
+        isAuth: state.authReducer.isAuth
+    };
 };
 // let mapDispatchToProps = (dispatch) =>{
 // 	return {
@@ -28,9 +29,9 @@ let mapStateToProps = (state) => {
 //
 // }
 
-let DialogsContainer = connect(mapStateToProps,
-	{addDialogsMessages,
-	updateDialogsNewMessages,}
-)(Dialogs);
+let DialogsContainer = connect(mapStateToProps, {
+    addDialogsMessages,
+    updateDialogsNewMessages,
+})(Dialogs);
 
 export default DialogsContainer;
