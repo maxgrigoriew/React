@@ -9,9 +9,7 @@ import { Redirect } from 'react-router';
 const Dialogs = (props) => {
 
     const dialogsItems = props.dialogs.map((item) => {
-        if (props.isAuth == false) {
-            return <Redirect to = 'login' > < /Redirect>
-        }
+
         return ( <
             DialogItem name = { item.name }
             id = { item.id }
@@ -35,6 +33,9 @@ const Dialogs = (props) => {
         props.updateDialogsNewMessages(text);
     };
 
+    // if (!props.isAuth) {
+    //     return <Redirect to = 'login' / >
+    // }
     return ( <
         div >
         <
