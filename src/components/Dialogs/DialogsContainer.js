@@ -7,6 +7,7 @@ import {
     updateDialogsNewMessages,
 } from '../../Redux/dialogs-reduser';
 import { withAuthRedirect } from './../../HOC/withAuthRedirect'
+import { compose } from 'redux';
 
 let mapStateToProps = (state) => {
     console.log(state)
@@ -16,11 +17,20 @@ let mapStateToProps = (state) => {
         dialogs: state.dialogsReducer.dialogs,
     };
 };
-let authRedirectComponent = withAuthRedirect(Dialogs)
 
-let DialogsContainer = connect(mapStateToProps, {
-    addDialogsMessages,
-    updateDialogsNewMessages,
-})(authRedirectComponent);
+// let authRedirectComponent = withAuthRedirect(Dialogs)
 
-export default DialogsContainer;
+// let DialogsContainer = connect(mapStateToProps, {
+//     addDialogsMessages,
+//     updateDialogsNewMessages,
+// })(authRedirectComponent);
+
+// альтернатива с compose:
+export default compose(
+        connect(mapStateToProps, {
+            addDialogsMessages,
+            updateDialogsNewMessages
+        }),
+        withAuthRedirect
+    )(Dialogs)
+    // export default DialogsContainer;

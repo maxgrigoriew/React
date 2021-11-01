@@ -12,6 +12,7 @@ import {
     unfollowThunkCreacor,
 
 } from './../../Redux/users-redusers';
+import { compose } from 'redux';
 
 let mapStateToProps = (state) => {
     return {
@@ -23,15 +24,28 @@ let mapStateToProps = (state) => {
         followingInProgress: state.usersReduser.followingInProgress,
     };
 };
-// HOC Redirect
-let withAuthRedirectContainer = withAuthRedirect(UsersAPIContainer)
 
-export default connect(mapStateToProps, {
-    isTotalFetching,
-    setCurentPage,
-    setTotalCount,
-    getUsersThunk: getUsersThunkCreator,
-    followThunkCreacor,
-    unfollowThunkCreacor,
-    // сделал такую запись, чтобы показать, что мы вызываем череза пропсы не getUsersThunkCreator, а колбэк, который создаст getUsersThunkCreator. Для сокращения кода можно писать по новому синтаксису (getUsersThunkCreator: getUsersThunkCreator)
-})(withAuthRedirectContainer);
+
+// // HOC Redirect
+// let withAuthRedirectContainer = withAuthRedirect(UsersAPIContainer)
+
+// export default connect(mapStateToProps, {
+//     isTotalFetching,
+//     setCurentPage,
+//     setTotalCount,
+//     getUsersThunk: getUsersThunkCreator,
+//     followThunkCreacor,
+//     unfollowThunkCreacor,
+//     // сделал такую запись, чтобы показать, что мы вызываем череза пропсы не getUsersThunkCreator, а колбэк, который создаст getUsersThunkCreator. Для сокращения кода можно писать по новому синтаксису (getUsersThunkCreator: getUsersThunkCreator)
+// })(withAuthRedirectContainer);
+
+export default compose(
+    connect(mapStateToProps, {
+        isTotalFetching,
+        setCurentPage,
+        setTotalCount,
+        getUsersThunk: getUsersThunkCreator,
+        followThunkCreacor,
+        unfollowThunkCreacor,
+    }), withAuthRedirect
+)(UsersAPIContainer)

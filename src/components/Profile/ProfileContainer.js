@@ -11,6 +11,7 @@ import { getUserThunk } from './../../Redux/profile-reduser';
 import { usersAPI } from '../../api/api'
 import { Redirect } from 'react-router';
 import { withAuthRedirect } from '../../HOC/withAuthRedirect';
+import { compose } from 'redux';
 
 
 
@@ -45,7 +46,7 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        setProfile: (profile) => {
+        setProfile: function(profile) {
             return dispatch(setProfileAC(profile));
         },
         getUserThunk: (id) => {
@@ -54,11 +55,11 @@ let mapDispatchToProps = (dispatch) => {
     };
 };
 
-
-let authRedirect = withAuthRedirect(ProfileContainer)
-
-let withRouterContainer = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(authRedirect));
-export default withRouterContainer
+export default compose(
+    withRouter,
+    withAuthRedirect,
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )
+)(ProfileContainer)
