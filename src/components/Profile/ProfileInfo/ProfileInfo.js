@@ -23,12 +23,10 @@ const ProfileInfo = (props) => {
 			</div>
 			<div className={s.profile__infoText}>
 				<div>
-					<Status status="status"></Status>
+					<Status {...props}></Status>
 				</div>
 				<div className={s.profile__item}>{props.profile.fullName}</div>
-				<div className={s.profile__item}>
-					{props.profile.lookingForAJobDescription}
-				</div>
+				<div className={s.profile__item}>{props.profile.lookingForAJobDescription}</div>
 				<div className={s.profile__item}> {props.profile.aboutMe} </div>
 			</div>
 		</div>

@@ -1,23 +1,23 @@
 /** @format */
-import styled from 'styled-components';
-import React from 'react';
-import Preloader from './../UI/Preloader/Preloader';
-import createPages from './../../myScripts/pagination';
-import {NavLink} from 'react-router-dom';
-import {usersAPI} from './../../api/api';
+import styled from "styled-components"
+import React from "react"
+import Preloader from "./../UI/Preloader/Preloader"
+import createPages from "./../../myScripts/pagination"
+import { NavLink } from "react-router-dom"
+import { usersAPI } from "./../../api/api"
 
 const ItemTop = styled.div`
 	margin-right: 60px;
 	display: flex;
 	flex-direction: column;
-`;
+`
 const Img = styled.img`
 	width: 100px;
 	height: 150px;
 	object-fit: cover;
 	border-radius: 15px;
 	margin-bottom: 10px;
-`;
+`
 const Button = styled.button`
 	color: #fff;
 	align-self: flex-end;
@@ -34,12 +34,12 @@ const Button = styled.button`
 		border: 1px solid #fff;
 		cursor: wait;
 	}
-`;
+`
 const Name = styled.h1`
 	font-size: 1.5em;
 	text-transform: uppercase;
 	color: #fff;
-`;
+`
 const Item = styled.div`
 	background: var(--color-accent);
 	display: flex;
@@ -47,18 +47,18 @@ const Item = styled.div`
 	border-radius: 15px;
 	padding: 30px;
 	color: #fff;
-`;
+`
 
-const City = styled.div``;
+const City = styled.div``
 const Status = styled.div`
 	color: red;
-`;
+`
 const Pagination = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 20px;
-`;
+`
 const PaginationItem = styled.div`
 	padding 2px 5px;
 	background: var(--color-accent);
@@ -76,12 +76,12 @@ const PaginationItem = styled.div`
 	&.active {
 		padding 4px 10px;
 	}
-`;
+`
 export default function Users(props) {
-	let pages = [];
-	let pagesCount = Math.ceil(props.totalCount / props.pageSize);
+	let pages = []
+	let pagesCount = Math.ceil(props.totalCount / props.pageSize)
 
-	createPages(pages, pagesCount, props.pageNumber);
+	createPages(pages, pagesCount, props.pageNumber)
 	return (
 		<div>
 			{props.isFetching ? <Preloader /> : null}
@@ -89,65 +89,56 @@ export default function Users(props) {
 				{pages.map((p) => {
 					return (
 						<PaginationItem
-							className={props.pageNumber === p ? 'active' : null}
+							className={props.pageNumber === p ? "active" : null}
 							onClick={() => {
-								props.pageNumber !== p &&
-									props.onPagesChanged(p);
+								props.pageNumber !== p && props.onPagesChanged(p)
 							}}>
 							{p}
 						</PaginationItem>
-					);
+					)
 				})}
 			</Pagination>
 			{props.users.map((item) => (
 				<Item key={item.id}>
 					<ItemTop>
-						<NavLink to={'/profile/' + item.id}>
+						<NavLink to={"/profile/" + item.id}>
 							<Img
 								src={
 									item.photos.small == null
-										? 'https://pp.userapi.com/c637323/v637323833/55842/T0EmQrWZ-QM.jpg'
+										? "https://pp.userapi.com/c637323/v637323833/55842/T0EmQrWZ-QM.jpg"
 										: item.photos.small
 								}
-								alt='logo'></Img>
+								alt="logo"></Img>
 						</NavLink>
 						{item.followed ? (
 							<Button
 								className={
-									props.followingInProgress.some(
-										(id) => id === item.id
-									)
-										? 'loading'
-										: ''
+									props.followingInProgress.some((id) => id === item.id)
+										? "loading"
+										: ""
 								}
-								disabled={props.followingInProgress.some(
-									(id) => id === item.id
-								)}
+								disabled={props.followingInProgress.some((id) => id === item.id)}
 								onClick={() => {
-									props.unfollowThunkCreacor(item.id);
+									props.unfollowThunkCreacor(item.id)
 								}}>
 								Follow
 							</Button>
 						) : (
 							<Button
 								className={
-									props.followingInProgress.some(
-										(id) => id === item.id
-									)
-										? 'loading'
-										: ''
+									props.followingInProgress.some((id) => id === item.id)
+										? "loading"
+										: ""
 								}
-								disabled={props.followingInProgress.some(
-									(id) => id === item.id
-								)}
+								disabled={props.followingInProgress.some((id) => id === item.id)}
 								onClick={() => {
-									props.followThunkCreacor(item.id);
+									props.followThunkCreacor(item.id)
 								}}>
 								Unfollow
 							</Button>
 						)}
 					</ItemTop>
-					<div className='wrapper'>
+					<div className="wrapper">
 						<Name>{item.name}</Name>
 						<City>{item.uniqueUrlName}</City>
 						<Status>{item.status}</Status>
@@ -155,5 +146,5 @@ export default function Users(props) {
 				</Item>
 			))}
 		</div>
-	);
+	)
 }
