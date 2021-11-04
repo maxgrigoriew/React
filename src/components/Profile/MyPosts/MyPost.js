@@ -37,4 +37,5 @@ const MyPost = (props) => {
 		</div>
 	)
 }
+
 export default MyPost

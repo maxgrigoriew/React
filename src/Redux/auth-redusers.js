@@ -31,10 +31,10 @@ export let setUserData = (userId, email, login) => {
 export const authUserThunk = () => {
 	return (dispatch) => {
 		authAPI.getAuth().then((resp) => {
-			if (resp.resultCode == 0) {
-				let { id, email, login } = resp.data
-				dispatch(setUserData(id, email, login))
-			}
+			// if (resp.resultCode == 0) {
+			let { id, email, login } = resp.data
+			dispatch(setUserData(id, email, login))
+			// }
 		})
 	}
 }
